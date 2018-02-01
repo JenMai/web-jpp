@@ -6,3 +6,4 @@ composer require annotations
 composer require --dev profiler
 composer require twig
 composer require asset
+composer require doctrine maker
