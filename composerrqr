@@ -1,9 +1,0 @@
-#! /bin/bash
-
-composer require server --dev
-composer require sec-checker
-composer require annotations
-composer require --dev profiler
-composer require twig
-composer require asset
-composer require doctrine maker
