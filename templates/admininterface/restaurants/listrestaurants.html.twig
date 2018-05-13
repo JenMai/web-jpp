@@ -1,0 +1,20 @@
+{% for message in app.flashes('notice') %}
+    <div class="flash-notice">
+        {{ message }}
+    </div>
+{% endfor %}
+
+<table>
+    {% for restaurant in restaurants %}
+    <tr>
+        <th>Editer</th>
+        <th>Supprimer</th>
+    </tr>
+    <tr>
+        <td><a href="{{ path('edit_restaurant',{'slug': restaurant.id}) }}">{{restaurant.libelle }}</a></td>
+    </tr>
+    <tr>
+        <td><a href="{{ path('suppr_restaurant',{'slug': restaurant.id}) }}">Suppr</a></td>
+    </tr>
+    {% endfor %}
+</table>

@@ -1,0 +1,24 @@
+{% for message in app.flashes('notice') %}
+    <div class="flash-notice">
+        {{ message }}
+    </div>
+{% endfor %}
+
+<table>
+  <tr>
+      <th>Libelle</th>
+      <th>Supprimer</th>
+  <tr>
+
+      {% for type in types %}
+      <tr>
+        <td>
+            {{ type.libelle }}
+        <td>
+            <td><a href="{{ path('suppr_type_attraction',{'slug': type.id }) }}">Suppr</a></td>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<a href="{{ path('nouv_type_attraction') }}">Ajouter</a>

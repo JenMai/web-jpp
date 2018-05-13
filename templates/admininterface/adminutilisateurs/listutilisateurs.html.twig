@@ -1,0 +1,29 @@
+{% for message in app.flashes('notice') %}
+    <div class="flash-notice">
+        {{ message }}
+    </div>
+{% endfor %}
+
+<table>
+  <tr>
+      <th>Editer</th>
+      <th>Gestion des commentaires</th>
+      <th>Supprimer</th>
+  <tr>
+
+      {% for attraction in attractions %}
+      <tr>
+        <td>
+            <td><a href="{{ path('edit_attraction',{'slug': attraction.id }) }}">{{attraction.libelle }}</a></td>
+        </td>
+        <td>
+            <td><a href="{{ path('commentaires_attraction',{'slug': attraction.id }) }}">Commentaires</a></td>
+        </td>
+        <td>
+            <td><a href="{{ path('suppr_attraction',{'slug': attraction.id }) }}">Suppr</a></td>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<a href="{{ path('nouv_attraction') }}">Ajouter</a>

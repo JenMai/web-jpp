@@ -1,0 +1,15 @@
+{% for message in app.flashes('notice') %}
+    <div class="flash-notice">
+        {{ message }}
+    </div>
+{% endfor %}
+
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+    <div>
+        {{ form_label(form.libelle) }}
+        {{ form_errors(form.libelle) }}
+        {{ form_widget(form.libelle) }}
+    </div>
+    <button type="submit">Ajouter</button>
+{{ form_end(form) }}

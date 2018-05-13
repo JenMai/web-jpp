@@ -1,0 +1,45 @@
+{% for message in app.flashes('notice') %}
+    <div class="flash-notice">
+        {{ message }}
+    </div>
+{% endfor %}
+
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+    <div>
+        {{ form_label(form.libelle) }}
+        {{ form_errors(form.libelle) }}
+        {{ form_widget(form.libelle, {'attr': {'value': attraction.libelle}}) }}
+    </div>
+
+    <div>
+        {{ form_label(form.type) }}
+        {{ form_errors(form.type) }}
+        {{ form_widget(form.type, {'attr': {'value': attraction.type}}) }}
+    </div>
+
+    <div>
+        {{ form_label(form.taillemini) }}
+        {{ form_errors(form.taillemini) }}
+        {{ form_widget(form.taillemini, {'attr': {'value': attraction.taillemini}}) }}
+    </div>
+
+    <div>
+        {{ form_label(form.age) }}
+        {{ form_errors(form.age) }}
+        {{ form_widget(form.age, {'attr': {'value': attraction.age }}) }}
+    </div>
+
+    <div>
+        {{ form_label(form.image) }}
+        {{ form_errors(form.image) }}
+        {{ form_widget(form.image, {'attr': {'value': attraction.image }}) }}
+    </div>
+
+    <div>
+        {{ form_label(form.description) }}
+        {{ form_errors(form.description) }}
+        {{ form_widget(form.description, {'attr': {'value': attraction.description}}) }}
+    </div>
+    <button type="submit">Editer</button>
+{{ form_end(form) }}
