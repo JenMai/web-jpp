@@ -1,6 +1,11 @@
 {% extends 'base.html.twig'%}
+{% block title %}
+Administration
+{% endblock %}
+
 {% block body %}
-
-  <p>Admin page!</p>
-
+<a href="{{ path('liste_utilisateurs') }}">Utilisateurs</a>
+<a href="{{ path('liste_attractions') }}">Attractions</a>
+<a href="{{ path('liste_restaurants') }}">Restaurants</a>
+<a href="{{ path('liste_hotels') }}">Hôtels</a>
 {% endblock %}

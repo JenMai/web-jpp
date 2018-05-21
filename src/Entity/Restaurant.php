@@ -29,7 +29,6 @@ class Restaurant
 
   /**
    * @ORM\ManyToOne(targetEntity="App\Entity\TypeRestaurant", inversedBy="restaurants")
-   * @ORM\JoinColumn(nullable=true)
    */
    private $type;
 
@@ -78,7 +77,7 @@ class Restaurant
       return $this->type;
   }
 
-  public function setType($Type)
+  public function setType($type)
   {
       $this->type = $type;
   }
@@ -88,7 +87,7 @@ class Restaurant
       return $this->vege;
   }
 
-  public function setVege($Vege)
+  public function setVege($vege)
   {
       $this->vege = $vege;
   }

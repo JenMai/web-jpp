@@ -1,3 +1,10 @@
+{% extends 'base.html.twig'%}
+
+{% block title %}
+Liste des restaurants
+{% endblock %}
+
+{% block body %}
 {% for message in app.flashes('notice') %}
     <div class="flash-notice">
         {{ message }}
@@ -12,9 +19,14 @@
     </tr>
     <tr>
         <td><a href="{{ path('edit_restaurant',{'slug': restaurant.id}) }}">{{restaurant.libelle }}</a></td>
-    </tr>
-    <tr>
+
         <td><a href="{{ path('suppr_restaurant',{'slug': restaurant.id}) }}">Suppr</a></td>
     </tr>
     {% endfor %}
 </table>
+
+<a href="{{ path('nouv_restaurant') }}">Ajouter</a>
+
+<a href="{{ path('liste_type_restaurant') }}">Gestionnaire des types</a>
+
+{% endblock %}

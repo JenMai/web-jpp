@@ -46,8 +46,9 @@ class TypeAttraction
         $this->libelle = $libelle;
     }
 
-    public function __toString() {
-    return $this->libelle;
+    public function __toString() 
+    {
+        return $this->libelle;
     }
 
     public function __construct()

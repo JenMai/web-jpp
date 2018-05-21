@@ -1,3 +1,10 @@
+{% extends 'base.html.twig'%}
+
+{% block title %}
+Liste des attractions
+{% endblock %}
+
+{% block body %}
 {% for message in app.flashes('notice') %}
     <div class="flash-notice">
         {{ message }}
@@ -27,3 +34,6 @@
 </table>
 
 <a href="{{ path('nouv_attraction') }}">Ajouter</a>
+<a href="{{ path('liste_type_attraction') }}">Gestionnaire des types</a>
+
+{% endblock %}

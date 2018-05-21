@@ -1,0 +1,39 @@
+{% extends 'base.html.twig'%}
+
+{% block title %}
+Commentaires pour 
+{% endblock %}
+
+{% block body %}
+{% for message in app.flashes('notice') %}
+    <div class="flash-notice">
+        {{ message }}
+    </div>
+{% endfor %}
+<table>
+  <tr>
+      <th>Auteur</th>
+      <th>Note</th>
+      <th>Contenu</th>
+      <th>Supprimer</th>
+  <tr>
+
+      {% for comment in comments %}
+      <tr>
+        <td>
+            <p>{{ comment.user }}</p>
+        </td>
+        <td>
+            <p>{{ comment.note }}</p>
+        </td>
+        <td>
+            <p>{{ comment.contenu }}</p>
+        </td>
+        <td>
+            <td><a href="{{ path('suppr_commentaire_attr',{'slug' : comment.attraction, 'slugcom' : comment.id }) }}">Suppr</a></td>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

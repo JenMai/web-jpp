@@ -1,7 +1,7 @@
 {% extends 'base.html.twig'%}
 
 {% block title %}
-Nouveau restaurant
+Modifier restaurant : {{ restaurant.libelle }}
 {% endblock %}
 
 {% block body %}
@@ -16,33 +16,33 @@ Nouveau restaurant
     <div>
         {{ form_label(form.libelle) }}
         {{ form_errors(form.libelle) }}
-        {{ form_widget(form.libelle) }}
+        {{ form_widget(form.libelle, {'attr': {'value': restaurant.libelle}}) }}
     </div>
 
     <div>
         {{ form_label(form.type) }}
         {{ form_errors(form.type) }}
-        {{ form_widget(form.type) }}
+        {{ form_widget(form.type, {'attr': {'value': restaurant.type}}) }}
     </div>
 
     <div>
         {{ form_label(form.vege) }}
         {{ form_errors(form.vege) }}
-        {{ form_widget(form.vege) }}
+        {{ form_widget(form.vege, {'attr': {'value': restaurant.vege}}) }}
     </div>
 
     <div>
         {{ form_label(form.image) }}
         {{ form_errors(form.image) }}
-        {{ form_widget(form.image) }}
+        {{ form_widget(form.image, {'attr': {'value': restaurant.image}}) }}
     </div>
 
     <div>
         {{ form_label(form.description) }}
         {{ form_errors(form.description) }}
-        {{ form_widget(form.description) }}
+        {{ form_widget(form.description, {'attr': {'value': restaurant.description}}) }}
     </div>
-    <button type="submit">Ajouter</button>
+    <button type="submit">Editer</button>
 {{ form_end(form) }}
 
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends 'base.html.twig'%}
 
 {% block title %}
-Types d'attraction
+Types de restaurants
 {% endblock %}
 
 {% block body %}
@@ -13,7 +13,7 @@ Types d'attraction
 
 <table>
   <tr>
-      <th>Libelle</th>
+      <th>Libellé</th>
       <th>Supprimer</th>
   <tr>
 
@@ -22,13 +22,13 @@ Types d'attraction
         <td>
             {{ type.libelle }}
         <td>
-            <td><a href="{{ path('suppr_type_attraction',{'slug': type.id }) }}">Suppr</a></td>
+            <td><a href="{{ path('suppr_type_restaurant',{'slug': type.id }) }}">Suppr</a></td>
         </td>
     </tr>
     {% endfor %}
 </table>
 
-<a href="{{ path('nouv_type_attraction') }}">Ajouter</a>
-<a href="{{ path('liste_attractions') }}">Retour aux attractions</a>
+<a href="{{ path('nouv_type_restaurant') }}">Ajouter</a>
+<a href="{{ path('liste_restaurants') }}">Retour aux restaurants</a>
 
 {% endblock %}

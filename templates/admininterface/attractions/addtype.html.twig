@@ -1,3 +1,10 @@
+{% extends 'base.html.twig'%}
+
+{% block title %}
+Nouveau type d'attraction
+{% endblock %}
+
+{% block body %}
 {% for message in app.flashes('notice') %}
     <div class="flash-notice">
         {{ message }}
@@ -13,3 +20,5 @@
     </div>
     <button type="submit">Ajouter</button>
 {{ form_end(form) }}
+
+{% endblock %}

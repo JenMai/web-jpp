@@ -1,3 +1,10 @@
+{% extends 'base.html.twig'%}
+
+{% block title %}
+Liste des utilisateurs
+{% endblock %}
+
+{% block body %}
 {% for message in app.flashes('notice') %}
     <div class="flash-notice">
         {{ message }}
@@ -7,23 +14,22 @@
 <table>
   <tr>
       <th>Editer</th>
-      <th>Gestion des commentaires</th>
       <th>Supprimer</th>
   <tr>
 
-      {% for attraction in attractions %}
+      {% for utilisateur in utilisateurs %}
       <tr>
         <td>
-            <td><a href="{{ path('edit_attraction',{'slug': attraction.id }) }}">{{attraction.libelle }}</a></td>
+            <td><a href="{{ path('edit_utilisateur',{'slug': utilisateur.id }) }}">{{utilisateur.username }}</a></td>
         </td>
         <td>
-            <td><a href="{{ path('commentaires_attraction',{'slug': attraction.id }) }}">Commentaires</a></td>
+            <td><a href="{{ path('commentaires_utilisateur',{'slug': utilisateur.id }) }}">Commentaires</a></td>
         </td>
         <td>
-            <td><a href="{{ path('suppr_attraction',{'slug': attraction.id }) }}">Suppr</a></td>
+            <td><a href="{{ path('suppr_utilisateur',{'slug': utilisateur.id }) }}">Suppr</a></td>
         </td>
     </tr>
     {% endfor %}
 </table>
 
-<a href="{{ path('nouv_attraction') }}">Ajouter</a>
+{% endblock %}

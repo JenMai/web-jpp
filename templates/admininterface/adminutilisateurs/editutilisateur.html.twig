@@ -1,3 +1,10 @@
+{% extends 'base.html.twig'%}
+
+{% block title %}
+Modifier utilisateur : {{ utilisateur.username }}
+{% endblock %}
+
+{% block body %}
 {% for message in app.flashes('notice') %}
     <div class="flash-notice">
         {{ message }}
@@ -7,39 +14,18 @@
 {{ form_start(form) }}
     {{ form_errors(form) }}
     <div>
-        {{ form_label(form.libelle) }}
-        {{ form_errors(form.libelle) }}
-        {{ form_widget(form.libelle, {'attr': {'value': attraction.libelle}}) }}
+        {{ form_label(form.username) }}
+        {{ form_errors(form.username) }}
+        {{ form_widget(form.username, {'attr': {'value': utilisateur.username}}) }}
     </div>
 
     <div>
-        {{ form_label(form.type) }}
-        {{ form_errors(form.type) }}
-        {{ form_widget(form.type, {'attr': {'value': attraction.type}}) }}
+        {{ form_label(form.email) }}
+        {{ form_errors(form.email) }}
+        {{ form_widget(form.email, {'attr': {'value': utilisateur.email}}) }}
     </div>
 
-    <div>
-        {{ form_label(form.taillemini) }}
-        {{ form_errors(form.taillemini) }}
-        {{ form_widget(form.taillemini, {'attr': {'value': attraction.taillemini}}) }}
-    </div>
-
-    <div>
-        {{ form_label(form.age) }}
-        {{ form_errors(form.age) }}
-        {{ form_widget(form.age, {'attr': {'value': attraction.age }}) }}
-    </div>
-
-    <div>
-        {{ form_label(form.image) }}
-        {{ form_errors(form.image) }}
-        {{ form_widget(form.image, {'attr': {'value': attraction.image }}) }}
-    </div>
-
-    <div>
-        {{ form_label(form.description) }}
-        {{ form_errors(form.description) }}
-        {{ form_widget(form.description, {'attr': {'value': attraction.description}}) }}
-    </div>
-    <button type="submit">Editer</button>
+    <button email="submit">Editer</button>
 {{ form_end(form) }}
+
+{% endblock %}

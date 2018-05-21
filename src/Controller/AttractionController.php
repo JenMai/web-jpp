@@ -5,7 +5,6 @@ use App\Form\AttractionType;
 use App\Form\TAttractionType;
 use App\Entity\Attraction;
 use App\Entity\TypeAttraction;
-use App\Controller\UploadController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -42,13 +41,13 @@ class AttractionController extends Controller
        {
          // 3) Save into db
 
-         // $file stores the uploaded PDF file
+         // $file stores the uploaded file
         /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
          $file = $attraction->getImage();
 
-         $filename = generateUniqueFileName().'.'.$file->guessExtension();
+         $filename = md5(uniqid()).'.'.$file->guessExtension();
 
-         // moves the file to the directory where brochures are stored
+         // moves the file to the directory where images are stored
          $file->move(
              $this->getParameter('images_directory_a'),
              $filename
@@ -62,7 +61,7 @@ class AttractionController extends Controller
 
          $this->addFlash(
             'notice',
-            'Attraction ajoutee !');
+            'Attraction ajoutée !');
 
          return $this->redirectToRoute('nouv_attraction');
        }
@@ -79,16 +78,7 @@ class AttractionController extends Controller
     public function delete($slug)
     {
       // get attraction with id
-      $attractiondel = $this->getDoctrine()
-                         ->getRepository(Attraction::class)
-                         ->find($slug);
-
-      if (!$attractiondel)
-      {
-           throw $this->createNotFoundException(
-               'Aucune attraction avec l\'id '.$slug
-           );
-       }
+      $attractiondel = $this->checkID($slug);
 
       // Delete from db
       $em = $this->getDoctrine()->getManager();
@@ -97,7 +87,7 @@ class AttractionController extends Controller
 
       $this->addFlash(
          'notice',
-         'Attraction supprimee !');
+         'Attraction supprimée !');
 
       // todo: refresh
       return $this->redirectToRoute('liste_attractions');
@@ -110,16 +100,8 @@ class AttractionController extends Controller
     public function edit($slug, Request $request)
     {
       // get attraction with id
-      $attractionedit = $this->getDoctrine()
-                         ->getRepository(Attraction::class)
-                         ->find($slug);
+      $attractionedit = $this->checkID($slug);
 
-     if (!$attractionedit)
-     {
-          throw $this->createNotFoundException(
-              'Aucune attraction avec l\'id '.$slug
-          );
-      }
       // build the form
       // todo: fix empty filetype form?
       $attractionedit->setImage(
@@ -146,9 +128,9 @@ class AttractionController extends Controller
        /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
         $file = $data->getImage();
 
-        $filename = generateUniqueFileName().'.'.$file->guessExtension();
+        $filename = md5(uniqid()).'.'.$file->guessExtension();
 
-        // moves the file to the directory where brochures are stored
+        // moves the file to the directory where images are stored
         $file->move(
             $this->getParameter('images_directory_a'),
             $filename
@@ -177,27 +159,51 @@ class AttractionController extends Controller
     /**
      * @Route("/admin/attractions/commentaires={slug}", name="commentaires_attraction")
      */
-    public function showComments()
+    public function showComments($slug)
     {
       // get attraction with id
-      // todo: make it into a separate method
-      $attraction = $this->getDoctrine()
-                         ->getRepository(Attraction::class)
-                         ->find($slug);
-
-      if (!$attraction)
-      {
-          throw $this->createNotFoundException(
-              'Aucune attraction avec l\'id '.$slug
-          );
-      }
+      $attraction = $this->checkID($slug);
 
       $linkedcomments = $attraction->getComments();
 
-      // print items with {{ typeattractions }}
+      // print items with {{ comments }}
      return $this->render('admininterface/attractions/listcomments.html.twig',
-           ['comments' => $comments]);
+           ['comments' => $linkedcomments]);
 
+    }
+
+    /**
+     * @Route("/admin/attractions/commentaires={slug}/suppr={slugcom}", name="suppr_commentaire_attr")
+     */
+    public function deleteComments($slug, $slugcom)
+    {
+      // get attraction with id
+      $attraction = $this->checkID($slug);
+
+      // get comment with id
+      $comment = $this->getDoctrine()
+                         ->getRepository(Comment::class)
+                         ->find($slugcom);
+
+      if (!$comment)
+      {
+          throw $this->createNotFoundException(
+              'Aucun commentaire avec l\'id '.$slugcom
+          );
+      }
+
+      // Delete from db
+      $em = $this->getDoctrine()->getManager();
+      $em->remove($comment);
+      $em->flush();
+
+      $this->addFlash(
+         'notice',
+         'Commentaire supprimé !');
+
+      // todo: refresh
+      return $this->redirectToRoute('commentaires_attraction',
+                                      array('slug' => $slug));
 
     }
 
@@ -238,7 +244,7 @@ class AttractionController extends Controller
          // todo: displays 4 times ?
           $this->addFlash(
              'notice',
-             'Type ajoute !');
+             'Type ajouté !');
 
           return $this->redirectToRoute('nouv_type_attraction');
         }
@@ -284,10 +290,29 @@ class AttractionController extends Controller
 
        $this->addFlash(
           'notice',
-          'Type supprime !');
+          'Type supprimé !');
 
        // Refresh
        return $this->redirectToRoute('liste_type_attraction');
+     }
+
+     private function checkID($input)
+     {
+       // get entity with id
+       $entity = $this->getDoctrine()
+                      ->getRepository(Attraction::class)
+                      ->find($input);
+
+       if (!$entity)
+       {
+            throw $this->createNotFoundException(
+                'Aucune attraction avec l\'id '.$input
+            );
+        }
+        else
+        {
+          return $entity;
+        }
      }
 }
 ?>

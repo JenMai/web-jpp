@@ -1,5 +1,8 @@
 <?php
 namespace App\Controller;
+
+use App\Entity\User;
+use App\Form\UserAdminType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,8 +18,8 @@ class UserController extends Controller
                           ->getRepository(User::class)
                           ->findAll();
        // print items with {{ users }}
-      return $this->render('admininterface/attractions/listattractions.html.twig',
-            ['users' => $users]);
+      return $this->render('admininterface/adminutilisateurs/listutilisateurs.html.twig',
+            ['utilisateurs' => $users]);
      }
 
      /**
@@ -49,7 +52,6 @@ class UserController extends Controller
           $em = $this->getDoctrine()->getManager();
           $useredit->setUsername($data->getUsername());
           $useredit->setEmail($data->getEmail());
-          $useredit->setNumberOfChildren($data->getNumberOfChildren());
           // todo: edit roles
 
           $em->flush();
@@ -94,8 +96,34 @@ class UserController extends Controller
            'notice',
            'Utilisateur supprimé !');
 
-        // todo: refresh
         return $this->redirectToRoute('liste_utilisateurs');
       }
+
+      /**
+       * @Route("/admin/utilisateurs/commentaires={slug}", name="commentaires_utilisateur")
+       */
+      public function showComments()
+      {
+        // get attraction with id
+        // todo: make it a separate method
+        $user = $this->getDoctrine()
+                           ->getRepository(User::class)
+                           ->find($slug);
+
+        if (!$user)
+        {
+            throw $this->createNotFoundException(
+                'Aucun utilisateur avec l\'id '.$slug
+            );
+        }
+
+        $linkedcomments = $user->getComments();
+
+        // print items with {{ typeattractions }}
+       return $this->render('admininterface/utilisateurs/listcomments.html.twig',
+             ['comments' => $comments]);
+
+      }
+
 }
 ?>

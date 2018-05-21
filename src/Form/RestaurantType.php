@@ -2,6 +2,7 @@
 namespace App\Form;
 
 use App\Entity\Restaurant;
+use App\Entity\TypeRestaurant;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -20,7 +21,7 @@ class RestaurantType extends AbstractType
       ))
       ->add('type', EntityType::class, array(
         'label' => 'Type',
-        'class' => TypeAttraction::class
+        'class' => TypeRestaurant::class
       ))
       ->add('vege', CheckboxType::class, array(
         'label' => 'Options végétariennes disponibles',
