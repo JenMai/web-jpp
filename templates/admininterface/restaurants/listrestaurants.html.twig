@@ -1,32 +1,29 @@
-{% extends 'base.html.twig'%}
+{% extends 'basetable.html.twig'%}
 
 {% block title %}
 Liste des restaurants
 {% endblock %}
 
-{% block body %}
-{% for message in app.flashes('notice') %}
-    <div class="flash-notice">
-        {{ message }}
-    </div>
-{% endfor %}
+{% block tablecontainer %}
+    <caption>Liste des restaurants</caption>
+    <thead>
+        <tr>
+            <th scope="col">Libellé</th>
+            <th scope="col">Supprimer</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for restaurant in restaurants %}
+            <tr>
+                <th scope="row"><a href="{{ path('edit_restaurant',{'slug': restaurant.id}) }}">{{restaurant.libelle }}</a></th>
 
-<table>
-    {% for restaurant in restaurants %}
-    <tr>
-        <th>Editer</th>
-        <th>Supprimer</th>
-    </tr>
-    <tr>
-        <td><a href="{{ path('edit_restaurant',{'slug': restaurant.id}) }}">{{restaurant.libelle }}</a></td>
+                <td><a class="btn btn-danger btn-sm" href="{{ path('suppr_restaurant',{'slug': restaurant.id}) }}">Suppr</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+{% endblock %}
 
-        <td><a href="{{ path('suppr_restaurant',{'slug': restaurant.id}) }}">Suppr</a></td>
-    </tr>
-    {% endfor %}
-</table>
-
-<a href="{{ path('nouv_restaurant') }}">Ajouter</a>
-
-<a href="{{ path('liste_type_restaurant') }}">Gestionnaire des types</a>
-
+{% block manage %}
+  <a class="btn btn-primary btn-md" href="{{ path('nouv_restaurant') }}">Ajouter</a>
+  <a class="btn btn-primary btn-md" href="{{ path('liste_type_restaurant') }}">Gestionnaire des types</a>
 {% endblock %}

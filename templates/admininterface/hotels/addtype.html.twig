@@ -1,16 +1,12 @@
-{% extends 'base.html.twig'%}
+{% extends 'baseform.html.twig'%}
 
 {% block title %}
-Nouveau type d'hôtel
+Ajouter hôtel
 {% endblock %}
 
-{% block body %}
-{% for message in app.flashes('notice') %}
-    <div class="flash-notice">
-        {{ message }}
-    </div>
-{% endfor %}
+{% block h1 %} Ajouter hôtel {% endblock %}
 
+{% block form %}
 {{ form_start(form) }}
     {{ form_errors(form) }}
     <div>
@@ -18,7 +14,7 @@ Nouveau type d'hôtel
         {{ form_errors(form.libelle) }}
         {{ form_widget(form.libelle) }}
     </div>
-    <button type="submit">Ajouter</button>
+    <button type="submit" class="btn btn-primary btn-md">Ajouter</button>
 {{ form_end(form) }}
 
 {% endblock %}

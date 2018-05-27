@@ -1,48 +1,43 @@
-{% extends 'base.html.twig'%}
+{% extends 'baseform.html.twig'%}
 
 {% block title %}
-Nouveau restaurant
+Ajouter restaurant
 {% endblock %}
 
-{% block body %}
-{% for message in app.flashes('notice') %}
-    <div class="flash-notice">
-        {{ message }}
-    </div>
-{% endfor %}
+{% block h1 %}Ajouter restaurant{% endblock %}
 
-{{ form_start(form) }}
-    {{ form_errors(form) }}
-    <div>
-        {{ form_label(form.libelle) }}
-        {{ form_errors(form.libelle) }}
-        {{ form_widget(form.libelle) }}
-    </div>
+{% block form %}
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+        <div>
+            {{ form_label(form.libelle) }}
+            {{ form_errors(form.libelle) }}
+            {{ form_widget(form.libelle) }}
+        </div>
 
-    <div>
-        {{ form_label(form.type) }}
-        {{ form_errors(form.type) }}
-        {{ form_widget(form.type) }}
-    </div>
+        <div>
+            {{ form_label(form.type) }}
+            {{ form_errors(form.type) }}
+            {{ form_widget(form.type) }}
+        </div>
 
-    <div>
-        {{ form_label(form.vege) }}
-        {{ form_errors(form.vege) }}
-        {{ form_widget(form.vege) }}
-    </div>
+        <div>
+            {{ form_label(form.vege) }}
+            {{ form_errors(form.vege) }}
+            {{ form_widget(form.vege) }}
+        </div>
 
-    <div>
-        {{ form_label(form.image) }}
-        {{ form_errors(form.image) }}
-        {{ form_widget(form.image) }}
-    </div>
+        <div>
+            {{ form_label(form.image) }}
+            {{ form_errors(form.image) }}
+            {{ form_widget(form.image) }}
+        </div>
 
-    <div>
-        {{ form_label(form.description) }}
-        {{ form_errors(form.description) }}
-        {{ form_widget(form.description) }}
-    </div>
-    <button type="submit">Ajouter</button>
-{{ form_end(form) }}
-
+        <div>
+            {{ form_label(form.description) }}
+            {{ form_errors(form.description) }}
+            {{ form_widget(form.description) }}
+        </div>
+        <button type="submit" class="btn btn-primary btn-md">Ajouter</button>
+    {{ form_end(form) }}
 {% endblock %}

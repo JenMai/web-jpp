@@ -1,34 +1,28 @@
-{% extends 'base.html.twig'%}
+{% extends 'basetable.html.twig'%}
 
 {% block title %}
-Types d'attraction
+Types d'attractions
 {% endblock %}
 
-{% block body %}
-{% for message in app.flashes('notice') %}
-    <div class="flash-notice">
-        {{ message }}
-    </div>
-{% endfor %}
+{% block tablecontainer %}
+    <caption>Liste des types d'attraction</caption>
+    <thead>
+        <tr>
+            <th scope="col">Libellé</th>
+            <th scope="col">Supprimer</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for type in types %}
+            <tr>
+                <th scope="row">{{ type.libelle }}<th>
+                <td><a class="btn btn-danger btn-sm" href="{{ path('suppr_type_attraction',{'slug': type.id }) }}">Suppr</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+{% endblock %}
 
-<table>
-  <tr>
-      <th>Libelle</th>
-      <th>Supprimer</th>
-  <tr>
-
-      {% for type in types %}
-      <tr>
-        <td>
-            {{ type.libelle }}
-        <td>
-            <td><a href="{{ path('suppr_type_attraction',{'slug': type.id }) }}">Suppr</a></td>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
-
-<a href="{{ path('nouv_type_attraction') }}">Ajouter</a>
-<a href="{{ path('liste_attractions') }}">Retour aux attractions</a>
-
+{% block manage %}
+    <a class="btn btn-primary btn-md" href="{{ path('nouv_type_attraction') }}">Ajouter</a>
+    <a class="btn btn-primary btn-md" href="{{ path('liste_attractions') }}">Retour aux attractions</a>
 {% endblock %}

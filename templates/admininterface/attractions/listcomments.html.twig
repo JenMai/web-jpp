@@ -1,39 +1,28 @@
-{% extends 'base.html.twig'%}
+{% extends 'basetable.html.twig'%}
 
 {% block title %}
-Commentaires pour 
+Commentaires pour ??
 {% endblock %}
 
-{% block body %}
-{% for message in app.flashes('notice') %}
-    <div class="flash-notice">
-        {{ message }}
-    </div>
-{% endfor %}
-<table>
-  <tr>
-      <th>Auteur</th>
-      <th>Note</th>
-      <th>Contenu</th>
-      <th>Supprimer</th>
-  <tr>
-
-      {% for comment in comments %}
-      <tr>
-        <td>
-            <p>{{ comment.user }}</p>
-        </td>
-        <td>
-            <p>{{ comment.note }}</p>
-        </td>
-        <td>
-            <p>{{ comment.contenu }}</p>
-        </td>
-        <td>
-            <td><a href="{{ path('suppr_commentaire_attr',{'slug' : comment.attraction, 'slugcom' : comment.id }) }}">Suppr</a></td>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
-
+{% block tablecontainer %}
+      <caption>Liste des commentaires pour ??</caption>
+      <thead>
+          <tr>
+              <th scope="col">Auteur</th>
+              <th scope="col">Note</th>
+              <th scope="col">Contenu</th>
+              <th scope="col">Supprimer</th>
+          </tr>
+      </thead>
+      <tbody>
+            {% for comment in comments %}
+            <tr>
+              <th scope="row">{{ comment.user }}</th>
+              <td>{{ comment.note }}</td>
+              <td>{{ comment.contenu }}
+              </td>
+              <td><a class="btn btn-danger btn-sm" href="{{ path('suppr_commentaire_attr',{'slug' : comment.attraction, 'slugcom' : comment.id }) }}">Suppr</a></td>
+            </tr>
+           {% endfor %}
+      </tbody>
 {% endblock %}
