@@ -34,7 +34,7 @@ for:
 
 `DATABASE_URL="sqlite:///%kernel.project_dir%/var/app.db"`
 
-# TODOs
+## TODOs
 
 Absent or partially implemented features:
 * Users
