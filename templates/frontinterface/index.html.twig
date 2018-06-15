@@ -1,0 +1,50 @@
+{% extends 'basemain.html.twig'%}
+
+{% block title %}
+	Bienvenue !
+{% endblock %}
+
+{% block body %}
+	<section class="mt-4">
+		<div class="container">
+			  <h3>Attraction du jour :</h3>
+	          <div class="row mt-2">
+	              <div class="col-sm-5">
+	                  <img src="{{ asset('uploads/images/attractions/' ~ attraction.image) }}" alt="{{attraction.libelle }}" class="img-fluid" />
+	              </div>
+	              <div class="col">
+	                  <a href="{{ path('front_attraction_info',{'name': attraction.libelle }) }}">
+	                      <h3>{{ attraction.libelle }}</h3>
+	                      <p class="description">{{ attraction.description }}</p>
+	                 </a>
+	              </div>
+	          </div>
+		</div>
+	</section class="mt-4">
+		<div class="container mx-auto">
+			<div class="row">
+				<div class="col-sm">
+					<a href="#">
+						<h5 class="text-uppercase text-center">Derniers jours !</h5>
+						<p class="text-center">Profitez de -30% sur votre séjour entre juin et septembre</p>
+					</a>
+				</div>
+				<div class="col-sm">
+					<a href="#">
+					<h5 class="text-uppercase text-center">N'attendez plus !</h5>
+					<p class="text-center">Profitez de -30% sur votre séjour entre juin et septembre</p>
+					</a>
+				</div>
+				<div class="col-sm">
+				    <a href="#">
+						<h5 class="text-uppercase text-center">Réservez tôt !</h5>
+						<p class="text-center">Economisez sur les séjours entre octobre et janvier</p>
+					</a>
+				</div>
+			</div>
+		</div>
+	<section>
+
+	</section>
+
+{% endblock %}

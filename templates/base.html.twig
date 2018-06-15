@@ -2,11 +2,85 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}Jean-Pierre Park{% endblock %}</title>
+        {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/normalize.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}" />
+        <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
+        {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+            <header>
+                {% block head %}
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <a href="" title="HomePage" class="logo"><img src="{{ asset('image/jppfont.png') }}" alt="HomePage" /></a>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="" title="Attractions">Attractions</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="" title="Tarifs">Tarifs</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="" title="Hébergement">Hébergement</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="" title="Restauration">Restauration</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="" title="Aide">Aide</a>
+                            </div>
+                {% endblock %}
+            </header>
+            <main>
+                {% block main %}
+                {% endblock %}
+            </main>
+            <footer>
+                {% block footer %}
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <section>
+                                    <a href="" title="Newsletter" class="Newsletter">Rejoignez-nous</a>
+                                </section>
+                            </div>
+                            <div class="col-md-3">
+                                <section>
+                                    <h5>Restons connectés</h5>
+                                    <a href="#" title="Facebook">
+                                        <img src="{{ asset('image/facebook.png') }}" alt="Facebook" />
+                                    </a>
+                                    <a href="#" title="Twitter">
+                                        <img src="{{ asset('image/twitter.png') }}" alt="Twitter" />
+                                    </a>
+                                </section>
+                            </div>
+                            <div class="col-md-3">
+                                <section>
+                                    <h5>Autres sites JPP</h5>
+                                    <ul>
+                                        <li><a href="" title="JPP.fr">JPP.fr</a></li>
+                                    <ul>
+                                    <ul>
+                                        <li><a href="" title="JPPub">JPPub</a></li>
+                                    <ul>
+                                    <ul>
+                                        <li><a href="" title="JPPôle emploi">JPPôle emploi</a></li>
+                                    <ul>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                {% endblock %}
+            </footer>
+        {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
+    <footer>
+    </footer>
 </html>

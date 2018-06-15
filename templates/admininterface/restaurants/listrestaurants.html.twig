@@ -1,0 +1,29 @@
+{% extends 'basetable.html.twig'%}
+
+{% block title %}
+Liste des restaurants
+{% endblock %}
+
+{% block tablecontainer %}
+    <caption>Liste des restaurants</caption>
+    <thead>
+        <tr>
+            <th scope="col">Libellé</th>
+            <th scope="col">Supprimer</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for restaurant in restaurants %}
+            <tr>
+                <th scope="row"><a href="{{ path('edit_restaurant',{'slug': restaurant.id}) }}">{{restaurant.libelle }}</a></th>
+
+                <td><a class="btn btn-danger btn-sm" href="{{ path('suppr_restaurant',{'slug': restaurant.id}) }}">Suppr</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+{% endblock %}
+
+{% block manage %}
+  <a class="btn btn-primary btn-md" href="{{ path('nouv_restaurant') }}">Ajouter</a>
+  <a class="btn btn-primary btn-md" href="{{ path('liste_type_restaurant') }}">Gestionnaire des types</a>
+{% endblock %}

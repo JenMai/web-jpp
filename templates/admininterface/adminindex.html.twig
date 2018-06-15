@@ -1,0 +1,12 @@
+{% extends 'baseadmin.html.twig'%}
+{% block title %}Acceuil{% endblock %}
+{% block body %}
+    {% block h1 %}Acceuil{% endblock %}
+    <div>
+    <p>Bonjour {{ app.user.username }} !</p>
+    <p>Statuts : </p>
+        <ul>
+            <li>Environnement : {{ app.environment }}</p></li>
+        </ul>
+    </div>
+{% endblock %}

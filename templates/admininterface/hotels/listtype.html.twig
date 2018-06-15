@@ -1,0 +1,28 @@
+{% extends 'basetable.html.twig'%}
+
+{% block title %}
+Types d'hôtels
+{% endblock %}
+
+{% block tablecontainer %}
+    <caption>Liste des types d'hôtel</caption>
+    <thead>
+        <tr>
+            <th scope="col">Libellé</th>
+            <th scope="col">Supprimer</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for type in types %}
+            <tr>
+                <th scope="row">{{ type.libelle }}<th>
+                <td><a class="btn btn-danger btn-sm" href="{{ path('suppr_type_hotel',{'slug': type.id }) }}">Suppr</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+{% endblock %}
+
+{% block manage %}
+    <a class="btn btn-primary btn-md" href="{{ path('nouv_type_hotel') }}">Ajouter</a>
+    <a class="btn btn-primary btn-md" href="{{ path('liste_hotels') }}">Retour aux hôtels</a>
+{% endblock %}

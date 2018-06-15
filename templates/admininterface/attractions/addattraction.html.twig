@@ -1,0 +1,49 @@
+{% extends 'baseform.html.twig'%}
+
+{% block title %}
+Ajouter attraction
+{% endblock %}
+
+{% block h1 %}Ajouter attraction{% endblock %}
+
+{% block form %}
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+        <div>
+            {{ form_label(form.libelle) }}
+            {{ form_errors(form.libelle) }}
+            {{ form_widget(form.libelle) }}
+        </div>
+
+        <div>
+            {{ form_label(form.type) }}
+            {{ form_errors(form.type) }}
+            {{ form_widget(form.type) }}
+        </div>
+
+        <div>
+            {{ form_label(form.taillemini) }}
+            {{ form_errors(form.taillemini) }}
+            {{ form_widget(form.taillemini) }}
+        </div>
+
+        <div>
+            {{ form_label(form.age) }}
+            {{ form_errors(form.age) }}
+            {{ form_widget(form.age) }}
+        </div>
+
+        <div>
+            {{ form_label(form.image) }}
+            {{ form_errors(form.image) }}
+            {{ form_widget(form.image) }}
+        </div>
+
+        <div>
+            {{ form_label(form.description) }}
+            {{ form_errors(form.description) }}
+            {{ form_widget(form.description) }}
+        </div>
+        <button type="submit" class="btn btn-primary btn-md">Ajouter</button>
+    {{ form_end(form) }}
+{% endblock %}

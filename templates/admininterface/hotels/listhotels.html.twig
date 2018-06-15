@@ -1,0 +1,29 @@
+{% extends 'basetable.html.twig'%}
+
+{% block title %}
+Liste des hôtels
+{% endblock %}
+
+{% block tablecontainer %}
+    <caption>Liste des hôtels</caption>
+    <thead>
+        <tr>
+            <th scope="col">Libellé</th>
+            <th scope="col">Supprimer</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for hotel in hotels %}
+            <tr>
+                <th scope="row"><a href="{{ path('edit_hotel',{'slug': hotel.id}) }}">{{hotel.libelle }}</a></th>
+
+                <td><a class="btn btn-danger btn-sm" href="{{ path('suppr_hotel',{'slug': hotel.id}) }}">Suppr</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+{% endblock %}
+
+{% block manage %}
+  <a class="btn btn-primary btn-md" href="{{ path('nouv_hotel') }}">Ajouter</a>
+  <a class="btn btn-primary btn-md" href="{{ path('liste_type_hotel') }}">Gestionnaire des types</a>
+{% endblock %}

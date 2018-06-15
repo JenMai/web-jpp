@@ -1,0 +1,26 @@
+{% extends 'basetable.html.twig'%}
+
+{% block title %}
+Liste des utilisateurs
+{% endblock %}
+
+{% block tablecontainer %}
+    <caption>Liste des utilisateurs</caption>
+    <thead>
+        <tr>
+            <th scope="col">Editer</th>
+            <th scope="col">Supprimer</th>
+        <tr>
+    <thead>
+    <tbody>
+        {% for utilisateur in utilisateurs %}
+          <tr>
+              <td scope="row"><a href="{{ path('edit_utilisateur',{'slug': utilisateur.id }) }}">{{utilisateur.username }}</a></td>
+              <td><a href="{{ path('commentaires_utilisateur',{'slug': utilisateur.id }) }}">Commentaires</a></td>
+              <td><a href="{{ path('suppr_utilisateur',{'slug': utilisateur.id }) }}">Suppr</a></td>
+          </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

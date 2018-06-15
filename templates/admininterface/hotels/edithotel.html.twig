@@ -1,0 +1,49 @@
+{% extends 'baseform.html.twig'%}
+
+{% block title %}
+Modifier hôtel : {{ hotel.libelle }}
+{% endblock %}
+
+{% block h1 %} Modifier hôtel : {{ hotel.libelle }} {% endblock %}
+
+{% block form %}
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+        <div>
+            {{ form_label(form.libelle) }}
+            {{ form_errors(form.libelle) }}
+            {{ form_widget(form.libelle, {'attr': {'value': hotel.libelle}}) }}
+        </div>
+
+        <div>
+            {{ form_label(form.type) }}
+            {{ form_errors(form.type) }}
+            {{ form_widget(form.type, {'attr': {'value': hotel.type}}) }}
+        </div>
+
+        <div>
+            {{ form_label(form.etoiles) }}
+            {{ form_errors(form.etoiles) }}
+            {{ form_widget(form.etoiles, {'attr': {'value': hotel.prix}}) }}
+        </div>
+
+        <div>
+            {{ form_label(form.prix) }}
+            {{ form_errors(form.prix) }}
+            {{ form_widget(form.prix, {'attr': {'value': hotel.prix}}) }}
+        </div>
+
+        <div>
+            {{ form_label(form.image) }}
+            {{ form_errors(form.image) }}
+            {{ form_widget(form.image, {'attr': {'value': hotel.image}}) }}
+        </div>
+
+        <div>
+            {{ form_label(form.description) }}
+            {{ form_errors(form.description) }}
+            {{ form_widget(form.description, {'attr': {'value': hotel.description}}) }}
+        </div>
+        <button type="submit" class="btn btn-primary btn-md">Editer</button>
+    {{ form_end(form) }}
+{% endblock %}

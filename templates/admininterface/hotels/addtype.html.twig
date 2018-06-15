@@ -1,0 +1,20 @@
+{% extends 'baseform.html.twig'%}
+
+{% block title %}
+Ajouter hôtel
+{% endblock %}
+
+{% block h1 %} Ajouter hôtel {% endblock %}
+
+{% block form %}
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+    <div>
+        {{ form_label(form.libelle) }}
+        {{ form_errors(form.libelle) }}
+        {{ form_widget(form.libelle) }}
+    </div>
+    <button type="submit" class="btn btn-primary btn-md">Ajouter</button>
+{{ form_end(form) }}
+
+{% endblock %}

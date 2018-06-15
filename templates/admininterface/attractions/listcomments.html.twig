@@ -1,0 +1,28 @@
+{% extends 'basetable.html.twig'%}
+
+{% block title %}
+Commentaires pour ??
+{% endblock %}
+
+{% block tablecontainer %}
+      <caption>Liste des commentaires pour ??</caption>
+      <thead>
+          <tr>
+              <th scope="col">Auteur</th>
+              <th scope="col">Note</th>
+              <th scope="col">Contenu</th>
+              <th scope="col">Supprimer</th>
+          </tr>
+      </thead>
+      <tbody>
+            {% for comment in comments %}
+            <tr>
+                <th scope="row">{{ comment.user }}</th>
+                <td>{{ comment.note }}</td>
+                <td>{{ comment.contenu }}
+                </td>
+                <td><a class="btn btn-danger btn-sm" href="{{ path('suppr_commentaire_attr',{'slug' : comment.attraction, 'slugcom' : comment.id }) }}">Suppr</a></td>
+            </tr>
+           {% endfor %}
+      </tbody>
+{% endblock %}

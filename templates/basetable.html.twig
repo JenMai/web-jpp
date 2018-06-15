@@ -1,0 +1,21 @@
+{% extends 'baseadmin.html.twig'%}
+
+{% block body %}
+    {% for message in app.flashes('notice') %}
+        <div class="flash-notice alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="table-responsive-md">
+        <table class="table table-sm table-hover">
+        {% block tablecontainer %}
+        {% endblock %}
+        </table>
+    </div>
+
+    <div>
+        {% block manage %} {% endblock %}
+    </div>
+
+{% endblock %}

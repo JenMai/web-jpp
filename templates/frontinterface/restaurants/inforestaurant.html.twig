@@ -1,0 +1,41 @@
+{% extends 'basemain.html.twig' %}
+
+{% block title %}
+    {{ restaurant.libelle }}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <article>
+            <header>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 mt-4">
+                                <h2>{{ restaurant.libelle }}</h2>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <img src="{{ asset('uploads/images/restaurants/' ~ restaurant.image) }}" alt="{{ restaurant.libelle }}" class="img-fluid" />
+                        </div>
+                            <section>
+                                <div class="col">
+                                    <p>Type : {{restaurant.type}}</p>
+                                    {% if restaurant.vege == 1 %}
+                                        <p class="text-success">Option végétarienne disponible</p>
+                                    {% endif %}
+                                </div>
+                        </div>
+                                <div class="row mt-2">
+                                <p class="description">{{restaurant.description}}</p>
+                                </div>
+                            </section>
+                </div>
+            </section>
+        </article>
+    </div>
+{% endblock %}

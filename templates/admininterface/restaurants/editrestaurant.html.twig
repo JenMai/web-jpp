@@ -1,0 +1,43 @@
+{% extends 'baseform.html.twig'%}
+
+{% block title %}
+Modifier restaurant : {{ restaurant.libelle }}
+{% endblock %}
+
+{% block h1 %} Modifier restaurant : {{ restaurant.libelle }} {% endblock %}
+
+{% block form %}
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+        <div>
+            {{ form_label(form.libelle) }}
+            {{ form_errors(form.libelle) }}
+            {{ form_widget(form.libelle, {'attr': {'value': restaurant.libelle}}) }}
+        </div>
+
+        <div>
+            {{ form_label(form.type) }}
+            {{ form_errors(form.type) }}
+            {{ form_widget(form.type, {'attr': {'value': restaurant.type}}) }}
+        </div>
+
+        <div>
+            {{ form_label(form.vege) }}
+            {{ form_errors(form.vege) }}
+            {{ form_widget(form.vege, {'attr': {'value': restaurant.vege}}) }}
+        </div>
+
+        <div>
+            {{ form_label(form.image) }}
+            {{ form_errors(form.image) }}
+            {{ form_widget(form.image, {'attr': {'value': restaurant.image}}) }}
+        </div>
+
+        <div>
+            {{ form_label(form.description) }}
+            {{ form_errors(form.description) }}
+            {{ form_widget(form.description, {'attr': {'value': restaurant.description}}) }}
+        </div>
+          <button type="submit" class="btn btn-primary btn-md">Editer</button>
+    {{ form_end(form) }}
+{% endblock %}

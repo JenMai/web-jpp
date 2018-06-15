@@ -1,0 +1,182 @@
+/*body{
+    font-size: 18px;
+    background-color: #f9f7f8;
+    font-family: 'Noto Serif', serif;
+}
+
+body>header{
+    background-color: #0588D4;
+    padding-top: 0.5em;
+    padding-bottom: 0.7em;
+    padding-right: 2em;
+    padding-left: 2em;
+}
+
+body>header a{
+    padding: 1em;
+    color: #f9f7f8;
+    text-decoration: none;
+    display: box;
+    border-radius: 0.3em;
+}*/
+
+.logo>img{
+    width: 5em;
+    height: auto;
+}
+
+.logo{
+    padding-top: 3em;
+    padding-bottom: 3em;
+    display: box;
+    border-radius: 0.3em;
+}
+
+/*body>header a:hover{
+    background-color: #2b9adb;
+}
+*/
+/*
+body>footer{
+    background-color: #131012;
+    color: #f9f7f8;
+    padding-top: 1.7em;
+    padding-bottom: 0.5em;
+}
+
+body>footer li{
+    display: block;
+}
+
+body>footer a{
+    font-size: 0.8em;
+    color: #f9f7f8;
+}
+
+body>footer a:hover{
+    color: #A8FFFF;
+}
+.Newsletter{
+    font-size: 0.9em;
+    margin: 0em;
+    font-weight: bold;
+}
+
+body>footer h5{
+    font-size: 0.9em;
+    margin: 0em;
+}
+body>footer ul{
+    padding: 0em;
+}*/
+
+body>footer img{
+	width: 2em;
+	height: auto;
+    display: block;
+    margin-top: 0.4em;
+    margin-left: 3.7em;
+}
+
+/*body>footer h5+a>img{
+    padding-top: 0.4em;
+}*/
+
+/*article>section>.container{
+    padding: 0em;
+    background-color: #cce0ff;
+    border-radius: 0em 0em 0.5em 0em;
+}
+
+article img{
+	width: 30.2em;
+    height: auto;
+    border-radius: 0em 0em 0em 0.5em;
+}
+
+article>header .row{
+    background: #aaaac0;
+    border-radius: 0.5em 0.5em 0em 0em;
+}
+
+article{
+    margin: 4em;
+    border-radius: 0.5em;
+}
+
+.ArtDesc{
+    margin-top: 1.5em;
+}
+*/
+.description{
+    font-style: italic;
+    padding-right: 2em;
+}
+/*
+.FastPresentation img{
+	width: 15em;
+    height: auto;
+    display: none;
+}
+
+.FastPresentation .image{
+    background-size: cover;
+    width: 12em;
+    height: 10em;
+}
+
+/*body>header .col-md-2{
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+body>header .container{
+    margin-right: 0em;
+    margin-left: 0em;
+}*/
+
+
+
+ul.notes-echelle {
+	margin:0;
+	padding:0;
+	font:.75em/1.2 Arial, Helvetica, sans-serif;
+}
+ul.notes-echelle li {
+	float:left;
+	margin:0;
+	padding:0;
+	list-style:none;
+	min-width:20px;
+	min-height:20px;
+}*/
+/* Correctif IE6 sur min-width & min-height */
+* html ul.notes-echelle.js li {
+	width:20px;
+	height:20px;
+}
+ul.notes-echelle li label {
+	display:block;
+	text-align:center;
+	line-height:20px;
+	background:url(/image/etoiles.gif) center top no-repeat;
+	cursor:pointer;
+}
+
+ul.notes-echelle li.note-off label {
+	background-position:center -60px;
+}
+
+ul.notes-echelle input {
+	position:absolute;
+	left:-999%;
+}
+
+/* Effet lorsque une note est cochée */
+ul.notes-echelle li.note-checked {
+	font-weight:bold;
+}
+/* Effet lorsque une note est tabulée au clavier */
+ ul.notes-echelle.js li.note-focus {
+	outline:1px dotted #000;
+}

@@ -1,0 +1,27 @@
+{% extends 'basemain.html.twig'%}
+
+{% block title %}
+Nos hotels
+{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+      {% for hotel in hotels %}
+          <div class="row mt-2">
+              <div class="col-sm-5">
+                  <img src="{{ asset('uploads/images/hotels/' ~ hotel.image) }}" alt="{{hotel.libelle }}" class="img-fluid" />
+              </div>
+              <div class="col">
+                  <a href="{{ path('front_hotel_info',{'name': hotel.libelle }) }}">
+                      <h3>{{ hotel.libelle }}</h3>
+                      <p>Type : {{ hotel.type }}</p>
+                      <p>Nuité : {{ hotel.prix }} €</p>
+                      <p>Etoiles : {% for e in 1..hotel.etoiles %}
+                        ★
+                      {% endfor %}</p>
+                 </a>
+              </div>
+          </div>
+    {% endfor %}
+</div>
+{% endblock %}

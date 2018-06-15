@@ -1,0 +1,31 @@
+{% extends 'basetable.html.twig'%}
+
+{% block title %}
+Liste des attractions
+{% endblock %}
+
+{% block tablecontainer %}
+    <caption>Liste des attractions</caption>
+    <thead>
+        <tr>
+            <th scope="col">Editer</th>
+            <th scope="col">Gestion des commentaires</th>
+            <th scope="col">Supprimer</th>
+        </tr>
+    </thead>
+    <tbody>
+      {% for attraction in attractions %}
+      <tr>
+        <th scope="row"><a href="{{ path('edit_attraction',{'slug': attraction.id }) }}">{{attraction.libelle }}</a></th>
+        <td><a href="{{ path('commentaires_attraction',{'slug': attraction.id }) }}">Commentaires</a></td>
+        <td><a class="btn btn-danger btn-sm" href="{{ path('suppr_attraction',{'slug': attraction.id }) }}">Suppr</a></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+{% block manage %}
+  <a class="btn btn-primary btn-md" href="{{ path('nouv_attraction') }}">Ajouter</a>
+  <a class="btn btn-primary btn-md" href="{{ path('liste_type_attraction') }}">Gestionnaire des types</a>
+{% endblock %}

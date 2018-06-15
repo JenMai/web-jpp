@@ -1,0 +1,26 @@
+{% extends 'baseform.html.twig'%}
+
+{% block title %}
+Modifier utilisateur : {{ utilisateur.username }}
+{% endblock %}
+
+{% block h1 %} Modifier utilisateur : {{ utilisateur.username }} {% endblock %}
+
+{% block form %}
+
+    {{ form_start(form) }}
+          {{ form_errors(form) }}
+          <div>
+              {{ form_label(form.username) }}
+              {{ form_errors(form.username) }}
+              {{ form_widget(form.username, {'attr': {'value': utilisateur.username}}) }}
+          </div>
+
+          <div>
+              {{ form_label(form.email) }}
+              {{ form_errors(form.email) }}
+              {{ form_widget(form.email, {'attr': {'value': utilisateur.email}}) }}
+          </div>
+          <button type="submit" class="btn btn-primary btn-md">Editer</button>
+    {{ form_end(form) }}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'baseadmin.html.twig'%}
+
+{% block body %}
+    {% for message in app.flashes('notice') %}
+        <div class="flash-notice alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div>
+        {% block form %}
+        {% endblock %}
+    </div>
+
+{% endblock %}

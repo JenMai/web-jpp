@@ -1,0 +1,25 @@
+{% extends 'basemain.html.twig'%}
+
+{% block title %}
+Nos attractions
+{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+      {% for attraction in attractions %}
+          <div class="row mt-2">
+              <div class="col-sm-5">
+                  <img src="{{ asset('uploads/images/attractions/' ~ attraction.image) }}" alt="{{attraction.libelle }}" class="img-fluid" />
+              </div>
+              <div class="col">
+                  <a href="{{ path('front_attraction_info',{'name': attraction.libelle }) }}">
+                      <h3>{{ attraction.libelle }}</h3>
+                      <p>Type : {{ attraction.type }}</p>
+                      <p>Âge conseillé : {{ attraction.age }} ans</p>
+                      <p>Taille minimum : {{ attraction.taillemini }} mètre(s)</p>
+                 </a>
+              </div>
+          </div>
+    {% endfor %}
+</div>
+{% endblock %}

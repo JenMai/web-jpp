@@ -1,0 +1,87 @@
+{% extends 'basemain.html.twig' %}
+
+{% block title %}
+    {{ attraction.libelle }}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <article>
+            <header>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 mt-4">
+                                <h2>{{ attraction.libelle }}</h2>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <img src="{{ asset('uploads/images/attractions/' ~ attraction.image) }}" alt="{{ attraction.libelle }}" class="img-fluid" />
+                        </div>
+                            <section>
+                                <div class="col">
+                                    <p>Type : {{attraction.type}}</p>
+                                    <p>Taille minimum : {{attraction.taillemini}} mètre(s)</p>
+                                    <p>Âge conseillé : {{attraction.age}} ans</p>
+                                </div>
+                        </div>
+                                <div class="row mt-2">
+                                <p class="description">{{attraction.description}}</p>
+                                </div>
+                            </section>
+                </div>
+            </section>
+            <section>
+            <div class="container mt-2">
+                <!-- TODO -->
+                <h3>Commentaires pour {{ attraction.libelle }}</h5>
+                <ol reversed class="list-unstyled">
+                    <li>
+                        <article>
+                            <header>
+                                <h5>Sacha du Bourg-Palette</h5>
+                                <!-- NOTE sur 5 -->
+                            </header>
+                            <p>Meilleure attraction de l'univers !</p>
+                            <footer>
+                                <time class="text-muted font-italic" datetime="2018-06-14 15:54">Le 14 juin 2018 à 15:54</time>
+                            </footer>
+                        </article>
+                    </li>
+                </ol>
+            </section>
+
+            </div>
+            <ul class="notes-echelle">
+                <li>
+                    <label for="note01" title="Note&nbsp;: 1 sur 5">1</label>
+                    <input type="radio" name="notesA" id="note01" value="1" />
+                </li>
+                <li>
+                    <label for="note02" title="Note&nbsp;: 2 sur 5">2</label>
+                    <input type="radio" name="notesA" id="note02" value="2" />
+                </li>
+                <li>
+                    <label for="note03" title="Note&nbsp;: 3 sur 5">3</label>
+                    <input type="radio" name="notesA" id="note03" value="3" />
+                </li>
+                <li>
+                    <label for="note04" title="Note&nbsp;: 4 sur 5">4</label>
+                    <input type="radio" name="notesA" id="note04" value="4" />
+                </li>
+                <li>
+                    <label for="note05" title="Note&nbsp;: 5 sur 5">5</label>
+                    <input type="radio" name="notesA" id="note05" value="5" />
+                </li>
+            </ul>
+        </article>
+    </div>
+{% endblock %}
+{% block javascripts %}
+  <script src="https://code.jquery.com/jquery-1.12.3.js" integrity="sha256-1XMpEtA4eKXNNpXcJ1pmMPs8JV+nwLdEqwiJeCQEkyc=" crossorigin="anonymous"></script>
+    <script src="/starScript.js"></script>
+{% endblock %}
